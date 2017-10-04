@@ -13,13 +13,15 @@ Output:
  --------------------------- */
 
 function areaTriangle(base, height) {
-  return "No code yet";
+  var result=0.5*base*height;
+  return result;
 }
-console.log("Triangle Area Calculator:");
+console.log("1) Triangle Area Calculator:");
 /* Uncomment the following to check */
-  // console.log(areaTriangle(2, 7));
-  // console.log(areaTriangle(20, 56.5));
-  // console.log(areaTriangle(50, 34));
+    console.log(areaTriangle(10, 20));
+    console.log(areaTriangle(2, 7));
+    console.log(areaTriangle(20, 56.5));
+    console.log(areaTriangle(50, 34));
 
 
 
@@ -45,12 +47,16 @@ HINT: Use substring()
 
 function rotate_string(text) {
   console.log(text);
+  for (var i=0;i<text.length;i++){
+    text=text.substring(1,text.length)+text[0];
+    console.log(text);
+  }
 }
 
-console.log("Rotate String:");
+console.log("2) Rotate String:");
 /* Uncomment the following to check */
-  //rotate_string("cat");
-  //rotate_string("voracious")
+  rotate_string("cat");
+  rotate_string("voracious")
 
 
 
@@ -72,13 +78,19 @@ HINT: Use split() and substring()
  --------------------------- */
 
 function protect_email(email) {
-  return "protected email";
+  var pos=email.indexOf("@");
+  var size=email.length;
+  var temp1=email.substr(0,5);
+  var temp2=email.substring(pos,size);
+  var result= temp1+"....."+temp2;
+  return result;
+
 }
 
-console.log("Protected email:");
+console.log("3) Protected email:");
 /* Uncomment the following to check */
-  //console.log(protect_email("harry_potter@gmail.com"));
-  //console.log(protect_email("sarah.connor@gmail.com"));
+  console.log(protect_email("harry_potter@gmail.com"));
+  console.log(protect_email("sarah.connor@gmail.com"));
 
 
 
@@ -98,13 +110,14 @@ HINT: Use join(), split() and sort() functions
  --------------------------- */
 
 function alphabetic_order(word) {
-  return "rearranged word";
+  return word.split('').sort().join('');
+
 }
 
-console.log("Alphabetic Order:");
+console.log("4) Alphabetic Order:");
 /* Uncomment the following to check */
-  // console.log(alphabetic_order("webmaster"));
-  // console.log(alphabetic_order("textbook"));
+   console.log(alphabetic_order("webmaster"));
+   console.log(alphabetic_order("textbook"));
 
 
 
@@ -124,12 +137,21 @@ Output:
  --------------------------- */
 
 function remove_duplicates(arr) {
-  console.log("Duplicates removed from array");
+
+    var tmp = [];
+    for(var i = 0; i < arr.length; i++){
+        if(tmp.indexOf(arr[i]) == -1){
+        tmp.push(arr[i]);
+        }
+    }
+    return tmp;
+
 }
 
-console.log("Remove Duplicate Values:");
+console.log("5) Remove Duplicate Values:");
 /* Uncomment the following to check */
   // remove_duplicates([3, 'a', 'a', 'a', 2, 3, 'a', 3, 'a', 2, 4, 9, 3]);
+console.log(remove_duplicates([3, 'a', 'a', 'a', 2, 3, 'a', 3, 'a', 2, 4, 9, 3]));
 
 
 /* ---------------------------
@@ -149,10 +171,31 @@ HINT: Use toString() and parseInt() functions
 
 function dash_in_odd(number) {
   console.log("odd numbers separated by dashes");
+  var tempStr=String(number);
+  var result=tempStr[0];
+  for (var i=1;i<tempStr.length;i++){
+    if (tempStr.charAt(i-1)%2 == 1 && tempStr.charAt(i)%2 == 1) {
+        result +='-'+tempStr.charAt(i);
+    }
+    else{
+      result+=tempStr.charAt(i);
+    }
+
+
+
+  }
+  console.log(result);
+
 }
 
-console.log("Dash between ODD Numbers:");
-/* Uncomment the following to check */
+console.log("6) Dash between ODD Numbers:");
+/* Uncomment the following to check
+console.log(dash_in_odd(100));
+console.log(dash_in_odd(1356));
+console.log(dash_in_odd(13790));
+console.log(dash_in_odd(132459784));
+console.log(dash_in_odd(013247568));*/
+
   dash_in_odd(100);
   dash_in_odd(1356);
   dash_in_odd(13790);
@@ -173,11 +216,22 @@ HINT: Use Math.ceil() and Math.random()
 
 function guessing_game(guess) {
   // Get a random integer from 1 to 10 inclusive
-  console.log("matched or unmatched?");
+  var randomNumber =Math.ceil(Math.random() * 10);
+  if (parseInt(guess) === randomNumber ) {
+
+   console.log("Good Work!!!");
+
+  }
+  else{
+  console.log("Not matched");
+  }
+  console.log("Computer guessed: "+ randomNumber);
 }
 
-console.log("Guessing Game:");
+
+console.log("7) Guessing Game:");
 /* Uncomment the following to check */
-  // var guess = prompt('Guess the number between 1 and 10 inclusive');
-  // console.log("User guessed: "+ guess);
+   var guess = prompt('Guess the number between 1 and 10 inclusive');
+   console.log("User guessed: "+ guess);
+  guessing_game(guess);
   // guessing_game(guess);
